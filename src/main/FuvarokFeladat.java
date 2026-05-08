@@ -27,7 +27,36 @@ public class FuvarokFeladat {
 
     }
     private static void feladatok() {
-        
+        System.out.println("Összes fuvar értéke: "+osszeg());
+        System.out.println("Legdrágább fuvar rendszáma: "+maxRendszam());
+        System.out.println("Legolcsóbb fuvar forintban: "+minOsszegFT()+"FT");
+    }
+
+    private static String maxRendszam() {
+        int maxI = 0;
+        for (int i = 1; i < fuvarok.size(); i++) {
+            if (fuvarok.get(i).getOsszeg() > fuvarok.get(maxI).getOsszeg()) {
+                maxI = i;
+            }
+        }
+        return fuvarok.get(maxI).getRendszam();
+    }
+    private static int minOsszegFT() {
+        int minI = 0;
+        for (int i = 1; i < fuvarok.size(); i++) {
+            if (fuvarok.get(i).getOsszeg() < fuvarok.get(minI).getOsszeg()) {
+                minI = i;
+            }
+        }
+        return (int)fuvarok.get(minI).getOsszeg() * 355;
+    }
+
+    private static int osszeg() {
+        int osszeg = 0;
+        for (int i = 0; i < fuvarok.size(); i++) {
+            osszeg += fuvarok.get(i).getOsszeg();
+        }
+        return osszeg;
     }
     
 }
